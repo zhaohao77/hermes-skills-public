@@ -1,0 +1,60 @@
+{
+  "region": "XX县（行政区标准全称）",
+  "base_url": "http://www.xx.gov.cn",
+  "min_year": 2024,
+  "town_url_tpl": "/zwgk/zjdxxgkml/{code}/",
+  "chan_regex": "url=\\.?/?([a-z]+\\d*)/",
+  "min_corpus": 300,
+  "body_regex": "",
+  "towns": {
+    "示例街道": {
+      "code": "abc1",
+      "channels": [
+        "gzdt1",
+        "tzgg2"
+      ]
+    }
+  },
+  "town_order": [
+    "示例街道"
+  ],
+  "county_prefix": "/zwgk/xxgkml/xwdt/",
+  "county_channels": [
+    "xwdt1",
+    "tzgg"
+  ],
+  "max_pages": 8,
+  "workers": 8,
+  "sleep": 0.4,
+  "exclude_words": [
+    "4S",
+    "汽贸",
+    "车行",
+    "餐饮",
+    "酒店",
+    "物流",
+    "货运",
+    "仓储",
+    "房地产",
+    "置业",
+    "物业",
+    "家具",
+    "木业",
+    "航空",
+    "景区",
+    "培训"
+  ],
+  "keep_words": [
+    "专精特新",
+    "小巨人",
+    "高新技术企业",
+    "规上工业",
+    "上市"
+  ],
+  "foreign_prefixes": [
+    "省城",
+    "邻市",
+    "外地市"
+  ],
+  "out_dir": "D:/tmp/xx_research"
+}

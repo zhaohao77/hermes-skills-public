@@ -2,7 +2,7 @@
 
 > 一个精选的 [Hermes Agent](https://hermes-agent.nousresearch.com/docs) 技能合集 —— 文档处理、网页采集、桌面自动化、工程方法与写作表达。
 
-共 **20 个技能**，全部经过实测可用、逐条脱敏，不含任何个人数据。
+共 **21 个技能**，全部经过实测可用、逐条脱敏，不含任何个人数据。
 
 ## 这是什么
 
@@ -26,7 +26,7 @@ cp -r /tmp/skills-public/* <hermes-home>/skills/
 
 | 技能 | 用途 | 来源 | 文件 |
 |---|---|---|---|
-| [`docx-formatter`](docx-formatter/SKILL.md) | Use when 生成公文、报告、总结、方案等正式 Word 文档，需符合中国公文格式规范（含述职报告、民主生活会等党政材料），或需要批量套用公文字体字号与版式。 | 本仓库 / MIT | 7 |
+| [`docx-formatter`](docx-formatter/SKILL.md) | Use when 生成公文、报告、总结、方案等正式 Word 文档，需符合中国公文格式规范（含述职报告、民主生活会等党政材料），或需要批量套用公文字体字号与版式。 | 本仓库 / MIT | 6 |
 | [`pdf`](pdf/SKILL.md) | PDF files: create, read, merge, fill, OCR, edit text. | Nous Research / MIT | 23 |
 | [`xlsx`](xlsx/SKILL.md) | Create, read, edit Excel .xlsx workbooks and CSVs. | Nous Research / MIT | 11 |
 
@@ -71,6 +71,12 @@ cp -r /tmp/skills-public/* <hermes-home>/skills/
 | 技能 | 用途 | 来源 | 文件 |
 |---|---|---|---|
 | [`al-brooks-price-action`](al-brooks-price-action/SKILL.md) | Analyze charts, OHLC bars, candlestick sequences, and trading context using Al Brooks st… | 本仓库 / MIT | 7 |
+
+### 业务调研
+
+| 技能 | 用途 | 来源 | 文件 |
+|---|---|---|---|
+| [`region-economy-research`](region-economy-research/SKILL.md) | Use when 要调研某区县/镇街/园区经济、做产业地图、出重点企业名单（含纳税或营收前N）、专精特新名单、普惠或对公业务拓展的区域摸底。 | 本仓库 / MIT | 7 |
 
 ## 目录约定
 
