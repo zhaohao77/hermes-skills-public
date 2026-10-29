@@ -1,0 +1,8 @@
+{
+  "customTitle": "智能网页数据采集",
+  "customDescription": "基于 Scrapling 开源框架，抓取任意网页数据，自动绕过 Cloudflare 等反爬防护，支持 JS 渲染与大规模并发爬取。",
+  "category": "傅盛三万同款",
+  "serviceId": "17736722903693742",
+  "version": "1.0.1",
+  "installedAt": 1778165699544
+}

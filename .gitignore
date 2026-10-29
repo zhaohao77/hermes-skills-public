@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# 系统
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 日志与临时
+*.log
+*.tmp
+*.bak
+
+# 本地凭据（千万别进库）
+.env
+.env.local
+*.pem
+*.key
+credentials.json
+token.json
+
+# Hermes 运行时噪声
+.curator_state
+.usage.json
+.skills_store_lock.json
