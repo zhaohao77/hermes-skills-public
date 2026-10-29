@@ -2,7 +2,7 @@
 
 > 一个精选的 [Hermes Agent](https://hermes-agent.nousresearch.com/docs) 技能合集 —— 文档处理、网页采集、桌面自动化、工程方法与写作表达。
 
-共 **21 个技能**，全部经过实测可用、逐条脱敏，不含任何个人数据。
+共 **27 个技能**，全部经过实测可用、逐条脱敏，不含任何个人数据。
 
 ## 这是什么
 
@@ -76,7 +76,18 @@ cp -r /tmp/skills-public/* <hermes-home>/skills/
 
 | 技能 | 用途 | 来源 | 文件 |
 |---|---|---|---|
-| [`region-economy-research`](region-economy-research/SKILL.md) | Use when 要调研某区县/镇街/园区经济、做产业地图、出重点企业名单（含纳税或营收前N）、专精特新名单、普惠或对公业务拓展的区域摸底。 | 本仓库 / MIT | 7 |
+| [`region-economy-research`](region-economy-research/SKILL.md) | Use when 要调研某区县/镇街/园区经济、做产业地图、出重点企业名单（含纳税或营收前N）、专精特新名单、普惠或对公业务拓展的区域摸底。 | 本仓库 / MIT | 8 |
+
+### 旅行与出行
+
+| 技能 | 用途 | 来源 | 文件 |
+|---|---|---|---|
+| [`textbook-trip-links`](textbook-trip-links/SKILL.md) | 把旅行景点/文物与孩子正在学的小学课本对上（"课本连线"）——亲子游行前预习、现场任务、孩子们分工。 | 本仓库 / MIT | 1 |
+| [`travel-deliverable-design`](travel-deliverable-design/SKILL.md) | 旅行交付物（行程攻略 Word / 明细 Excel / 9:16 手机手账图 / PDF）的设计规范与用户偏好。 | 本仓库 / MIT | 20 |
+| [`travel-fact-verification`](travel-fact-verification/SKILL.md) | 旅行信息核验纪律——查景区/车次/酒店/餐饮时的事实核查与数据边界。 | 本仓库 / MIT | 8 |
+| [`travel-itinerary-planning`](travel-itinerary-planning/SKILL.md) | 端到端的多日旅行行程规划工作流——需求澄清 → 真实车次/酒店/景点数据实测 → 按「票源+地理」设计路线 → 逐段时间链量化验证 → 手绘路线图 → Word/Excel 交付。 | 本仓库 / MIT | 6 |
+| [`travel-scrapbook-itinerary`](travel-scrapbook-itinerary/SKILL.md) | Use when the user provides a travel itinerary, OCR itinerary text, table itinerary, scre… | 本仓库 / MIT | 20 |
+| [`travel-scrapbook-rendering`](travel-scrapbook-rendering/SKILL.md) | 把旅行行程渲染成 9:16 竖版「旅行手账图」——手机可读的行程板（Day 徽章 + 虚线路线 + 编号节点 + 打卡框 + 费用/强度卡）。 | 本仓库 / MIT | 5 |
 
 ## 目录约定
 

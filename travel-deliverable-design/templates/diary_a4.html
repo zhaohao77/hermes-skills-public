@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+  孩子旅行日记 / A4 横行作文纸 模板（已实测：正好铺满 A4 300dpi）
+  用法：替换四个占位符后，用 gen_diary.py 渲染成 PNG
+      __DAY__    → 1 / 2 / 3 ...（显示为 Day N 徽章）
+      __DATE__   → 2026年10月1日 周四
+      __ROUTE__  → 长沙 → 郑州 → 中牟（当天路线/景点，显示在大日期右侧小字）
+      __PROMPT__ → 当天定制提示语（见 SKILL.md 铁律 10 的写法表）
+
+  ⚠️ 不要改成 mm 单位：Playwright 在大 viewport 下 mm 不会铺满，内容会缩在左上角 1/4。
+  ⚠️ 不要随便增减横线行数：1 行 = 132px，总高必须 == 3508（改完实测 document.body.scrollHeight）。
+-->
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  /* A4 @300dpi = 2480 x 3508 px（全部用 px，避免 mm 换算问题） */
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    width:2480px; height:3508px; overflow:hidden;
+    font-family:"楷体","KaiTi","STKaiti",serif; color:#2B2B2B;
+    background:#FFFDF7;
+    padding:150px 175px 110px;
+    position:relative;
+  }
+  .top { border-bottom:9px solid #B5544A; padding-bottom:34px; margin-bottom:44px; }
+  .row1 { display:flex; align-items:center; gap:52px; }
+  .badge {
+    background:#B5544A; color:#fff; border-radius:34px; padding:16px 52px;
+    font-size:74px; font-weight:700; font-family:"黑体",sans-serif;
+    transform:rotate(-1.5deg); letter-spacing:4px; white-space:nowrap;
+  }
+  .h1 { font-size:70px; font-weight:700; letter-spacing:2px; line-height:1.15; }
+  .h1 small { font-size:40px; color:#8A7A62; font-weight:400; margin-left:20px; }
+  .metaline { display:flex; gap:60px; margin-top:32px; font-size:44px; color:#4A4238; align-items:center; flex-wrap:wrap; }
+  .fill { border-bottom:4px solid #B9AE9A; display:inline-block; min-width:230px; height:52px; vertical-align:-8px; }
+  .fill.w { min-width:340px; }
+  .mood { display:flex; gap:22px; align-items:center; }
+  .mood span { border:4px solid #B9AE9A; border-radius:14px; padding:6px 22px; font-size:40px; white-space:nowrap; }
+  .kw { font-size:44px; color:#8A7A62; margin-top:30px; line-height:1.4; }
+  .kw b { color:#B5544A; }
+
+  .line { border-bottom:4px solid #CFC5B4; height:132px; }   /* 1 行 = 132px */
+  .line.sep { border-bottom:6px solid #B9AE9A; }            /* 每 4 行一条粗分隔线 */
+
+  .bottom { margin-top:40px; border-top:9px solid #B5544A; padding-top:34px; }
+  .bl { font-size:44px; color:#8A7A62; }
+  .bline { border-bottom:4px solid #B9AE9A; height:96px; margin-top:14px; }
+  .draw { margin-top:32px; border:7px dashed #D9C9A8; border-radius:26px;
+          height:470px; display:flex; align-items:center; justify-content:center;
+          font-size:42px; color:#C4B79E; }
+</style>
+</head>
+<body>
+
+  <div class="top">
+    <div class="row1">
+      <div class="badge">Day __DAY__</div>
+      <div class="h1">__DATE__<small>__ROUTE__</small></div>
+    </div>
+    <div class="metaline">
+      <div>天气：<span class="fill"></span></div>
+      <div>我住在：<span class="fill w"></span></div>
+    </div>
+    <div class="metaline" style="margin-top:22px;">
+      <div class="mood">今天的心情：
+        <span>😄 超开心</span><span>🙂 挺好</span><span>😐 一般</span><span>😫 好累</span>
+      </div>
+    </div>
+    <div class="kw">✍️ <b>__PROMPT__</b></div>
+  </div>
+
+  <!-- 16 行 = 132px x 16；每 4 行一条 sep。改行数后必须实测总高 == 3508 -->
+  <div class="paper">
+    <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+    <div class="line sep"></div>
+    <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+    <div class="line sep"></div>
+    <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+    <div class="line sep"></div>
+    <div class="line"></div>
+  </div>
+
+  <div class="bottom">
+    <div class="bl">🌟 今天最想记住的一件事：</div>
+    <div class="bline"></div>
+    <div class="draw">✏️ 在这里画下来（想画什么都可以）</div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+interface:
+  display_name: "旅行流程手账生成器"
+  short_description: "把旅行计划拆成路线清晰的 9:16 可视化手账提示词或图片"
+  default_prompt: "Use $travel-scrapbook-itinerary to turn my pasted trip itinerary or rough trip idea into route-first 9:16 Chinese travel scrapbook image prompts."
+
+policy:
+  allow_implicit_invocation: true

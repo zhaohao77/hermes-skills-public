@@ -1,0 +1,176 @@
+version: 1
+
+defaults:
+  aspect_ratio: "9:16"
+  image_count_per_page: 1
+  language: "zh-CN"
+  output_mode: "generate_prompts"
+  style_name: "可爱拼贴攻略手账"
+  route_first: true
+  visual_priority: "旅行流程可视化优先，图片好看第二"
+
+features:
+  auto_supplement_place_images: true
+  auto_build_from_rough_idea: true
+  require_live_lookup_for_weather_transport_hotels_food: true
+  auto_weather_lookup: true
+  auto_food_lookup_near_attractions: true
+  auto_group_buying_platform_lookup: true
+  auto_social_platform_food_lookup: true
+  fallback_to_public_search_when_platform_blocked: true
+  auto_merge_low_density_dates: true
+  parse_first_without_image_generation: true
+  confirm_before_batch_image_generation: true
+  allow_single_page_regeneration: true
+  enable_replaceable_image_slots: true
+  auto_generate_images_when_available: true
+  fallback_to_copyable_prompts: true
+  public_safe_mode: true
+
+page_density_logic:
+  single_page_conditions:
+    - "有跨城交通"
+    - "有明确航班或车次"
+    - "有酒店切换"
+    - "有两个以上核心景点"
+    - "有门票、开放时间、预约或时间卡点"
+    - "旅行开篇或收尾页"
+  merge_conditions:
+    - "同城慢游"
+    - "内容较少"
+    - "没有复杂交通"
+    - "主要是自由活动"
+    - "相邻两天属于同一城市同一主题"
+  density_weights:
+    cross_city_transport: 3
+    explicit_flight_or_train: 3
+    hotel_change: 2
+    two_or_more_core_attractions: 2
+    ticket_or_opening_or_cutoff: 2
+    opening_or_return_day: 2
+    weather_risk: 2
+    food_or_optional_notes: 1
+
+style_prompt: >-
+  vertical 9:16 Chinese travel scrapbook itinerary page, beige grid-paper
+  background, cute travel-journal collage, sticker-like cutout photos with
+  white borders, gray dashed route lines, black handwritten Chinese labels,
+  rounded pastel blocks in soft blue / cream yellow / muted brick red,
+  playful doodles, high-density but clear layout, practical travel guide
+  feeling, suitable for phone viewing.
+
+public_asset_policy:
+  ship_private_character_assets: false
+  ship_generated_samples_with_private_ip: false
+  ship_real_itinerary_screenshots: false
+  ship_third_party_style_reference_images: false
+  public_style_reference_mode: "text_rules_only"
+  public_character_mode: "generic_placeholder_unless_user_uploads_assets"
+  private_profile_path: "private/character-profile.local.yaml"
+  private_profile_example_path: "references/character-profile.example.yaml"
+
+asset_directories:
+  optional_private_style_references: "assets/style-references/"
+  optional_private_generated_samples: "assets/generated-samples/"
+  optional_private_source_itineraries: "assets/source-itineraries/"
+  optional_private_character_references: "assets/character-references/"
+  optional_private_profile: "private/character-profile.local.yaml"
+
+character_prompts:
+  public_default:
+    - id: "traveler_a"
+      name: "Traveler A"
+      prompt: "generic cute route-checking travel companion sticker, neutral hoodie, backpack, sneakers, holding map or phone, reliable and lightly humorous"
+      usage: "small corner sticker, route reminder sticker, luggage or transport action"
+    - id: "traveler_b"
+      name: "Traveler B"
+      prompt: "generic cute travel companion sticker, casual travel outfit, camera or tote bag, warm observant food-photo-rest reminder"
+      usage: "small observation sticker, food or photo sticker, route note sticker"
+  placement_rule: "Characters support the itinerary; they must not dominate the page."
+  private_override_rule: "If private/character-profile.local.yaml exists or the user uploads references, use those instead of public placeholders."
+
+feasibility_defaults:
+  supplement_policy: "只补真实且城市匹配的景点/美食/视觉素材，并标注为建议补充。"
+  avoid_by_default:
+    - "需要显著增加交通风险的远距离景点"
+    - "天气风险高且无室内备选的安排"
+    - "未核实营业/开放状态的硬安排"
+
+output_contract:
+  sections:
+    - "【1. 基础假设与实时查询】"
+    - "【2. 行程可行性判断】"
+    - "【3. 天气与穿搭/携带提醒】"
+    - "【4. 推荐行程安排】"
+    - "【5. 交通方式推荐】"
+    - "【6. 住宿区域建议】"
+    - "【7. 景点附近小吃/餐饮建议】"
+    - "【8. 行程结构化拆解】"
+    - "【9. 手账页数建议】"
+    - "【10. 每页内容规划】"
+    - "【11. 每页生图提示词】"
+    - "【12. 批量生成说明】"
+
+ui:
+  itinerary_input_placeholder: "粘贴你的旅行行程，或上传行程截图，我会自动拆成旅游攻略手账。"
+  rough_idea_placeholder: "只知道出发地、目的地、日期和想去的几个点也可以，我会先补成可执行旅行方案。"
+  character_upload_hint: "上传你和同行人的卡通形象，系统会自动放入手账角落；未上传时使用通用旅行搭子贴纸。"
+  style_options:
+    - "可爱拼贴攻略手账"
+  generation_modes:
+    - "只拆解行程"
+    - "生成手账提示词"
+    - "直接生成手账图片"
+  output_tabs:
+    - "行程拆解"
+    - "页数建议"
+    - "每页规划"
+    - "每页生图提示词"
+    - "图片结果"
+
+batch_generation:
+  default_width_height_ratio: "9:16"
+  default_images_per_page: 1
+  regenerate_by: "page_number"
+  confirmation_required: true
+  replacement_supported_by: "page_number + slot_id"
+
+replaceable_image_slots:
+  enabled: true
+  slot_id_format: "P{page}-IMG{number}"
+  preserve_on_replacement:
+    - "page split"
+    - "route order"
+    - "text cards"
+    - "Day badge"
+    - "character stickers"
+    - "reminder bubbles"
+    - "white sticker border style"
+  replaceable_types:
+    - "景点照片"
+    - "美食照片"
+    - "酒店照片"
+    - "交通照片"
+    - "回忆小图"
+
+live_data_automation:
+  weather_sources_priority:
+    - "built_in_weather_tool"
+    - "official_weather_source"
+    - "weather_web_search"
+    - "historical_average_fallback"
+  food_sources_priority:
+    - "大众点评"
+    - "美团团购"
+    - "小红书"
+    - "高德地图"
+    - "百度地图"
+    - "Apple Maps"
+    - "携程/Tripadvisor/public web"
+  food_ranking:
+    - "distance_to_route"
+    - "meal_slot_fit"
+    - "local_relevance"
+    - "rating_review_recency"
+    - "queue_and_opening_practicality"
+    - "scrapbook_visual_value"

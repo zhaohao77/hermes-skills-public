@@ -1,0 +1,18 @@
+# Copy this file to private/character-profile.local.yaml and edit it locally.
+# Do not commit private character profiles or private character images.
+
+characters:
+  - id: traveler_a
+    display_name: "Your Character A"
+    prompt: "short visual identity and travel role, e.g. route-checking companion with hoodie, backpack, phone"
+    role: "route/time/luggage reminder"
+    assets:
+      - "assets/character-references/your-character-a-sheet.png"
+      - "assets/character-references/your-character-a-poses.png"
+  - id: traveler_b
+    display_name: "Your Character B"
+    prompt: "short visual identity and travel role, e.g. photo/food/rest companion with camera and tote bag"
+    role: "photo/food/rest reminder"
+    assets:
+      - "assets/character-references/your-character-b-sheet.png"
+      - "assets/character-references/your-character-b-poses.png"
